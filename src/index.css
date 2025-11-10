@@ -1,0 +1,413 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Color Variables */
+:root {
+  --color-cream: #FFE8B3;
+  --color-dark-purple: #2B1B42;
+  --color-orange: #E94E1B;
+  --color-red: #E64A19;
+  --color-gold: #FFD700;
+  --color-gold-accent: #ffbd44;
+  --color-dark: #1A1A1A;
+  --color-gray-dark: #2B2B2B;
+  --color-gray-medium: #4A4A4A;
+  --color-gray-light: #6B7280;
+}
+
+/* Base Styles */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--color-dark-purple);
+  color: var(--color-dark-purple);
+}
+
+/* Typography */
+.heading-display {
+  @apply font-serif text-6xl font-bold md:text-7xl lg:text-8xl;
+  color: var(--color-dark);
+}
+
+.heading-section {
+  @apply font-serif text-5xl font-bold;
+  color: var(--color-dark);
+}
+
+.heading-subsection {
+  @apply text-xl font-semibold;
+}
+
+.text-body {
+  @apply text-base text-gray-800;
+}
+
+.text-small {
+  @apply text-sm;
+}
+
+/* Layout */
+.page-container {
+  @apply min-h-screen font-sans;
+  background-color: var(--color-cream);
+  color: var(--color-dark-purple);
+}
+
+.content-wrapper {
+  @apply container mx-auto max-w-7xl;
+}
+
+.two-column-layout {
+  @apply flex flex-col-reverse lg:flex-row;
+}
+
+.column-left {
+  @apply w-full px-6 py-12 lg:w-2/5 lg:px-12 lg:py-24;
+}
+
+.column-right {
+  @apply w-full px-6 py-12 lg:w-3/5 lg:px-12 lg:py-24;
+}
+
+/* Sections */
+.section {
+  @apply mb-12;
+}
+
+.section-card {
+  @apply rounded-2xl p-8 text-white shadow-lg;
+  overflow: visible;
+}
+
+.section-card--orange {
+  background-color: var(--color-orange);
+  color: var(--color-dark-purple);
+}
+
+.section-card--purple {
+  background-color: var(--color-dark-purple);
+}
+
+.section-card--gray {
+  background-color: var(--color-gray-dark);
+}
+
+.section-card--accent {
+  background-color: var(--color-gold-accent);
+  color: var(--color-dark-purple);
+}
+
+/* Timeline */
+.timeline-container {
+  @apply relative;
+}
+
+.timeline-item {
+  @apply flex gap-4;
+}
+
+.timeline-marker-wrapper {
+  @apply flex flex-col items-center;
+}
+
+.timeline-marker {
+  @apply text-2xl;
+}
+
+.timeline-marker--red {
+  @apply text-red-600;
+}
+
+.timeline-marker--white {
+  @apply text-white;
+}
+
+.timeline-marker--blue {
+  color: rgb(52, 111, 117);
+}
+
+.timeline-marker--purple {
+  color: rgb(43, 27, 66);
+}
+
+.timeline-marker--creamy {
+  color: var(--color-cream);
+}
+
+.timeline-line--creamy {
+  border-color: var(--color-cream);
+}
+
+
+.timeline-line {
+  @apply w-px flex-grow border-l-2 border-dashed;
+  /* Removed border-gray-300 from here */
+}
+
+/* ADDED THESE NEW CLASSES */
+.timeline-line--red {
+  @apply border-red-600;
+}
+
+.timeline-line--white {
+  @apply border-white;
+}
+
+.timeline-line--blue {
+  border-color: rgb(52, 111, 117); /* Matches the --blue marker color */
+}
+
+.timeline-line--purple {
+  border-color: rgb(43, 27, 66); /* Matches the --purple marker color */
+}
+
+.timeline-content {
+  @apply pb-8;
+}
+
+.timeline-year {
+  @apply font-semibold;
+}
+
+.timeline-title {
+  @apply font-bold text-lg;
+}
+
+.timeline-title--link {
+  @apply font-bold text-lg;
+  text-decoration: none;
+  transition: text-decoration 0.2s ease-in-out;
+}
+
+.timeline-title--link:hover {
+  text-decoration: underline;
+}
+/* Buttons & Links */
+.btn-primary {
+  @apply inline-flex items-center gap-2.5 rounded-full px-6 py-3 font-semibold text-white shadow-lg transition-transform duration-200 hover:scale-105;
+}
+
+.btn-primary--orange {
+  background-color: var(--color-red);
+}
+
+/* Tags & Badges */
+.tag {
+  @apply rounded-full px-4 py-1.5 text-xs font-medium;
+}
+
+.tag--dark {
+  @apply bg-gray-800 text-white;
+}
+
+.tag--light {
+  @apply bg-black text-white;
+}
+
+.tag--outline {
+  @apply bg-transparent text-white border border-white transition-colors;
+}
+
+.tag--outline:hover {
+  @apply bg-white;
+  color: #3D5A3B;
+}
+
+.badge-info {
+  @apply rounded-full px-5 py-2.5 font-semibold shadow-lg;
+  min-width: 110px;
+}
+
+.badge-info--gold {
+  background-color: var(--color-gold-accent);
+  color: var(--color-dark-purple);
+}
+
+/* Profile Section */
+.profile-container {
+  @apply relative w-full;
+}
+
+.profile-background {
+  @apply absolute right-0 top-0 w-10/12 rounded-bl-3xl;
+  height: 32rem;
+  /* background-color: var(--color-dark-purple); */
+}
+
+@media (min-width: 768px) {
+  .profile-background {
+    height: 40rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile-background {
+    height: 48rem;
+  }
+}
+
+.profile-image-wrapper {
+  @apply relative z-10 mx-auto w-full pt-16;
+}
+
+.profile-accent-rectangle {
+  @apply absolute left-0 top-0 w-full rounded-br-3xl;
+  height: 600px;
+  transform: translate(-2rem, -2rem);
+  background-color: var(--color-orange);
+}
+
+@media (min-width: 768px) {
+  .profile-accent-rectangle {
+    transform: translate(-3rem, -3rem);
+  }
+}
+
+.profile-image {
+  @apply relative w-full object-cover shadow-2xl;
+  height: 600px;
+  object-position: center;
+}
+
+.profile-badge-birth {
+  @apply absolute left-0 z-20;
+  top: 6rem;
+}
+
+@media (min-width: 768px) {
+  .profile-badge-birth {
+    left: 1rem;
+    top: 8rem;
+  }
+}
+
+.profile-badge-nationality {
+  @apply absolute right-0 z-20;
+  top: 10rem;
+}
+
+@media (min-width: 768px) {
+  .profile-badge-nationality {
+    right: 1rem;
+    top: 16rem;
+  }
+}
+
+/* Contact Card */
+.contact-card {
+  @apply relative z-20 mx-auto w-10/12 rounded-xl p-6 text-white shadow-2xl sm:w-8/12 md:p-8;
+  background-color: rgba(52, 111, 117, 0.90);
+  margin-top: -4rem;
+}
+
+@media (min-width: 1024px) {
+  .contact-card {
+    @apply absolute left-0 w-9/12;
+    bottom: -6rem;
+  }
+}
+
+
+
+.contact-heading {
+  @apply mb-4 font-serif text-3xl font-bold;
+}
+
+.contact-list {
+  @apply space-y-3;
+}
+
+.contact-item {
+  @apply flex items-center gap-3;
+}
+
+/* Skills Section */
+.skills-section {
+  @apply relative w-full py-12 lg:pt-32;
+}
+
+.skills-watermark {
+  @apply absolute inset-x-0 top-0 hidden select-none overflow-hidden font-serif font-extrabold opacity-20 lg:block;
+  color: var(--color-gold-accent);
+}
+
+.skills-watermark-text {
+  @apply leading-none;
+  font-size: 12rem;
+  -webkit-text-stroke: 2px var(--color-gold-accent);
+}
+
+.skills-content {
+  @apply relative z-10;
+}
+
+.skills-grid {
+  @apply flex flex-col gap-10 md:flex-row;
+}
+
+.skills-column {
+  @apply flex-1 space-y-8;
+}
+
+.skill-icon {
+  @apply flex items-center justify-center rounded-lg bg-white shadow-md px-4 py-2; /* Changed h-12 w-12 to px-4 py-2 */
+}
+
+
+.skill-icon-label {
+  @apply font-bold text-gray-800;
+}
+
+.skill-list {
+  @apply flex flex-wrap gap-3;
+}
+
+.skill-text-list {
+  @apply flex flex-wrap gap-x-6 gap-y-2;
+}
+
+.skill-text-item {
+  @apply font-medium text-gray-800;
+}
+
+.design-skills-list {
+  @apply mt-10 flex flex-wrap gap-x-6 gap-y-3 md:mt-0;
+}
+
+.design-skill-item {
+  @apply flex items-center gap-2;
+}
+
+/* Language Section */
+.language-section {
+  @apply py-12;
+}
+
+.language-list {
+  @apply mt-4 space-y-2;
+}
+
+.language-item {
+  @apply text-lg;
+}
+
+.language-label {
+  @apply font-semibold;
+}
+
+/* Utility Classes */
+.section-spacing {
+  @apply mb-12;
+}
+
+.section-spacing-large {
+  @apply lg:mt-32;
+}
+
+.max-width-content {
+  @apply max-w-md;
+}
+
+.text-description {
+  @apply text-sm opacity-90;
+}
