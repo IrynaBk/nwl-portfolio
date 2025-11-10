@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import profilePhoto from './assets/profile-cat.jpg'; // <-- ADD THIS LINE
 
 // --- TYPE DEFINITIONS ---
 
@@ -306,8 +307,8 @@ const Profile: React.FC = () => (
       <div className="profile-accent-rectangle"></div>
       
       <img
-        src="/photo_2025-11-07_13-13-00.jpg"
-        alt="Han"
+        src={profilePhoto} // <-- CHANGE THIS LINE
+        alt="cat screaming meow"
         className="profile-image"
       />
     </div>
