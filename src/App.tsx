@@ -126,7 +126,7 @@ const experienceData: TimelineItemProps[] = [
   {
     year: 'january 2025 - present',
     title: 'Data Scientist at EPAM Systems',
-    subtitle: 'query intent, orchestration and MCP servers in financial domain',
+    subtitle: 'query intent, orchestration and MCP servers',
   },
   {
     year: 'august 2024',
@@ -164,9 +164,12 @@ const contactData: ContactInfo[] = [
 ];
 
 const softwareSkills: string[] = ['Azure', 'Spark', 'VsCode', 'Docker'];
-const codingSkills: string[] = ['Python', 'JavaScript', 'Pandas', 'Seaborn', 'FastMCP', 'Semantic Kernel'];
+const codingSkills: string[] = ['Python', 'JavaScript', 'Pandas', 'Seaborn', 'FastMCP', 'Semantic Kernel', 'TensorFlow', 'Pytorch'];
 const designSkills: string[] = [
   'Classic Machine learning and not only',
+  'Deep Learning',
+  'Natural Language Processing', 
+  'Computer Vision',
   'Web programming',
   'Database Management',
   'Algorithms and Data Structures',
