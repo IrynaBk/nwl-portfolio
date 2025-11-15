@@ -314,6 +314,7 @@ const Profile: React.FC = () => (
         alt="cat screaming meow"
         className="profile-image"
       />
+      <p className="art-by text-right">art credits: congming33</p>
     </div>
 
     <div className="badge-info badge-info--gold profile-badge-birth">
