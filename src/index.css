@@ -62,11 +62,11 @@ body {
 }
 
 .column-left {
-  @apply w-full px-6 py-12 lg:w-2/5 lg:px-12 lg:py-24;
+  @apply w-full px-6 py-12 lg:w-1/2 lg:px-12 lg:py-24;
 }
 
 .column-right {
-  @apply w-full px-6 py-12 lg:w-3/5 lg:px-12 lg:py-24;
+  @apply w-full px-6 py-12 lg:w-1/2 lg:px-12 lg:py-24;
 }
 
 /* Sections */
@@ -252,7 +252,7 @@ body {
 
 .profile-accent-rectangle {
   @apply absolute left-0 top-0 w-full rounded-br-3xl;
-  height: 600px;
+  height: 500px;
   transform: translate(-2rem, -2rem);
   background-color: var(--color-orange);
 }
@@ -265,17 +265,17 @@ body {
 
 .profile-image {
   @apply relative w-full object-cover shadow-2xl;
-  height: 600px;
+  height: 500px;
   object-position: center;
 }
 
-.profile-badge-birth {
+.profile-badge-name {
   @apply absolute left-0 z-20;
   top: 6rem;
 }
 
 @media (min-width: 768px) {
-  .profile-badge-birth {
+  .profile-badge-name {
     left: 1rem;
     top: 8rem;
   }
@@ -319,6 +319,24 @@ body {
 
 .contact-item {
   @apply flex items-center gap-3;
+}
+
+/* Custom sizing for Experience Section */
+.experience-timeline .timeline-year {
+  @apply text-base; /* standard sizes up slightly */
+}
+
+.experience-timeline .timeline-title,
+.experience-timeline .timeline-title--link {
+  @apply text-xl; /* bumps up from text-lg */
+}
+
+.experience-timeline .timeline-content p:not([class]) {
+  @apply text-lg; /* bumps up the main role/client subtitle text */
+}
+
+.experience-timeline .text-description {
+  @apply text-base; /* bumps up the description paragraphs from text-sm */
 }
 
 /* Skills Section */
@@ -380,7 +398,7 @@ body {
 
 /* Language Section */
 .language-section {
-  @apply py-12;
+  @apply pt-2 pb-12;
 }
 
 .language-list {
@@ -393,6 +411,11 @@ body {
 
 .language-label {
   @apply font-semibold;
+}
+
+/* Certifications Section */
+.certifications-section {
+  @apply py-12;
 }
 
 /* Utility Classes */

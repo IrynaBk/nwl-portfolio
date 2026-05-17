@@ -1,6 +1,8 @@
 import React from 'react';
 import './index.css';
-import profilePhoto from './assets/profile-cat.jpg'; // <-- ADD THIS LINE
+import profilePhoto from './assets/profile-cat.jpg';
+import secondImage from './assets/snoopy-rock.png';
+import Marquee from "react-fast-marquee";
 
 // --- TYPE DEFINITIONS ---
 
@@ -107,7 +109,7 @@ const SvgSparkle: React.FC<{ className?: string }> = ({ className = '' }) => (
 const educationData: TimelineItemProps[] = [
   {
     year: '2025-present',
-    title: 'Lviv Polytechnic National University',
+    title: 'Lviv Polytechnic National University ',
     subtitle: 'Masters in Computer Science (AI department)',
   },
   {
@@ -124,14 +126,22 @@ const educationData: TimelineItemProps[] = [
 
 const experienceData: TimelineItemProps[] = [
   {
-    year: 'january 2025 - present',
-    title: 'Data Scientist at EPAM Systems',
-    subtitle: 'query intent, orchestration and MCP servers',
+    year: 'september 2025 - present',
+    title: 'AI Engineer & Data Analyst at EPAM',
+    subtitle: 'Developing a large-scale Financial AI Assistant using enterprise orchestration frameworks (Semantic Kernel, Pydantic AI) integrated with 50+ MCP tools and skills.',
+    description: 'Designed and built a custom Python parallelized evaluation framework providing 14 distinct LLM and rule-based metrics/KPIs. Conducted multi-dimensional performance analysis to eliminate bottlenecks and optimize system reliability. Provided action items for improving the system based on evaluation diagnostics.',
+  },
+  {
+    year: 'february 2025 - september 2025',
+    title: 'AI Engineer at EPAM',
+    subtitle: 'Worked on an internal SDK code generation system utilizing RAG architecture and Llama Index.',
+    description: 'Developed an automated system for labeling generated code quality across releases, performed comprehensive error-bucketing analysis, and ran optimization experiments to increase output reliability.',
   },
   {
     year: 'august 2024',
     title: 'AI Engineering Intern in the Cyber Police Department',
-    subtitle: 'RAG system for legal document retrieval focused on the Ukrainian Criminal Code, involving PDF parsing, data indexing, and integration of LLaMA Index with transformer-based models with reranking mechanism.',
+    subtitle: 'Developed an optimized RAG system for legal document retrieval focused on the Ukrainian Criminal Code.',
+    description: 'Handled end-to-end PDF parsing and indexing with pdfplumber and SpaCy. Built an optimized retrieval system using LLaMA Index, faiss and integrated a transformer-based cross-encoder reranking mechanism.',
   }
 ];
 
@@ -140,7 +150,7 @@ const projectsData: TimelineItemProps[] = [
     year: 'april 2025',
     title: 'BEST::HACKath0n 2025 Best Technical Solution!',
     subtitle: 'Developed a damage assessment web app within 2 days that analyzed damage caused by Russia aggression against Ukraine, calculated the projected repair costs for affected buildings or entire areas using ML.',
-    description: 'sklearn, FastAPI, React, teamwork!',
+    description: 'end-to-end reasearch, requirements gathering: sklearn, FastAPI, React, teamwork and ungodly amount of black tea!',
     url: 'https://www.linkedin.com/feed/update/urn:li:activity:7322573119661985792/',
   },
   {
@@ -157,21 +167,28 @@ const projectsData: TimelineItemProps[] = [
   },
 ];
 
+const certificationsData: string[] = [
+  'Microsoft AI Fundamentals',
+  'Microsoft AI Associate',
+  'EPAM Business Analysis Fundamentals'
+];
+
 const contactData: ContactInfo[] = [
   { icon: <SvgLocation />, text: 'Ukraine, Lviv' },
   { icon: <SvgEmail />, text: 'iraboyko098@gmail.com' },
   // { icon: <SvgPhone />, text: '07 82 84 59 00' },
 ];
 
-const softwareSkills: string[] = ['Azure', 'Spark', 'VsCode', 'Docker'];
-const codingSkills: string[] = ['Python', 'JavaScript', 'Pandas', 'Seaborn', 'FastMCP', 'Semantic Kernel', 'TensorFlow', 'Pytorch'];
+const softwareSkills: string[] = ['Azure', 'Docker', 'Git', 'Spark', 'VsCode'];
+const codingSkills: string[] = ['Python', 'SQL', 'Pydantic AI', 'Semantic Kernel', 'Llama Index', 'Hugging Face', 'PyTorch', 'TensorFlow', 'Scikit-Learn', 'XGBoost', 'Pandas', 'NumPy', 'JavaScript', 'Ruby'];
 const designSkills: string[] = [
-  'Classic Machine learning and not only',
-  'Deep Learning',
-  'Natural Language Processing', 
+  'LLM Evaluation & Prompt Testing',
+  'Agentic Workflows & AI Gen Application Dev',
+  'Natural Language Processing (NLP)',
+  'Information Retrieval & Reranking',
+  'Exploratory Data Analysis (EDA) & Statistics',
+  'Deep Learning & Neural Networks',
   'Computer Vision',
-  'Web programming',
-  'Database Management',
   'Algorithms and Data Structures',
 ];
 
@@ -226,7 +243,7 @@ const Tag: React.FC<TagProps> = ({ label, variant = 'dark' }) => {
 const Hero: React.FC = () => (
   <section className="section relative">
     <SvgSparkle className="absolute -top-6 -right-6 w-16 h-16 text-[#FFD700] opacity-50" />
-    <SvgSparkle className="absolute top-32 -left-4 w-12 h-12 text-[#E94E1B] opacity-40" />
+    <SvgSparkle className="absolute top-32 -left-12 w-12 h-12 text-[#E94E1B] opacity-40" />
     <SvgSparkle className="absolute bottom-8 right-16 w-10 h-10 text-[#2B1B42] opacity-30" />
     <h1 className="heading-display">
       Hello,
@@ -234,7 +251,7 @@ const Hero: React.FC = () => (
       I'm Ira!
     </h1>
     <p className="text-body max-width-content mt-6">
-      I am Machine learning enthusiast with experience working on NLP projects and data analysis. I have fondation in math, statistic and algorithms. Nice to meet you hehe!
+      I am Machine learning enthusiast with experience working on NLP projects and data analysis. I have fondation in math, statistic and algorithms. Nice to meet you here!
     </p>
     
     <a
@@ -249,12 +266,33 @@ const Hero: React.FC = () => (
   </section>
 );
 
+const CertificationsMarquee: React.FC = () => {
+  // Triple the data to ensure the track is long enough to cover gaps seamlessly
+  const items = [...certificationsData, ...certificationsData, ...certificationsData];
+  
+  return (
+    <div className="mt-12">
+      <h3 className="heading-subsection mb-4">Certifications</h3>
+      <Marquee>
+        {items.map((cert, index) => (
+          <React.Fragment key={index}>
+            <span className="marquee-item font-semibold" style={{ color: 'var(--color-dark-purple)' }}>
+              {cert}
+            </span>
+            <span style={{ margin: '0 1.5rem', color: 'var(--color-orange)' }}>★</span>
+          </React.Fragment>
+        ))}
+      </Marquee>
+    </div>
+  );
+};
+
 const Experience: React.FC = () => (
   <section className="section relative">
     <SvgSparkle className="absolute -top-6 -right-4 w-14 h-14 text-[#E94E1B] opacity-45" />
-    <SvgSparkle className="absolute bottom-4 -left-3 w-10 h-10 text-[#FFD700] opacity-50" />
+    <SvgSparkle className="absolute bottom-4 -left-8 w-10 h-10 text-[#FFD700] opacity-50" />
     <h2 className="heading-section mb-8">Experience</h2>
-    <div className="timeline-container">
+    <div className="timeline-container experience-timeline">
       {experienceData.map((item) => (
         <TimelineItem key={item.title} {...item} color="red" />
       ))}
@@ -308,17 +346,16 @@ const Profile: React.FC = () => (
 
     <div className="profile-image-wrapper">
       <div className="profile-accent-rectangle"></div>
-      
       <img
-        src={profilePhoto} // <-- CHANGE THIS LINE
+        src={profilePhoto}
         alt="cat screaming meow"
         className="profile-image"
       />
       <p className="art-by text-right">art credits: congming33</p>
     </div>
 
-    <div className="badge-info badge-info--gold profile-badge-birth">
-      11 August 2004
+    <div className="badge-info badge-info--gold profile-badge-name">
+      Iryna Boiko
     </div>
     <div className="badge-info badge-info--gold profile-badge-nationality">
       Ukrainian
@@ -330,7 +367,8 @@ const Profile: React.FC = () => (
         {contactData.map((item) => (
           <div key={item.text} className="contact-item">
             {item.icon}
-            <span className="text-small">{item.text}</span>
+            <span className="font-medium">{item.text}</span>
+            <span className="ml-2 text-[#E94E1B]">★</span>
           </div>
         ))}
       </div>
@@ -343,11 +381,11 @@ const TechnicalSkills: React.FC = () => (
     <div className="skills-watermark" aria-hidden="true">
       <div className="skills-watermark-text">NWL</div>
       <div className="skills-watermark-text">NWL</div>
+      <div className="skills-watermark-text">NWL</div>
     </div>
 
     <SvgSparkle className="absolute -top-8 -left-6 w-16 h-16 text-[#E94E1B] opacity-35 hidden lg:block" />
     <SvgSparkle className="absolute top-1/4 -right-8 w-14 h-14 text-[#FFD700] opacity-40 hidden lg:block" />
-    <SvgSparkle className="absolute bottom-12 left-1/3 w-12 h-12 text-[#2B1B42] opacity-30" />
 
     <div className="skills-content">
       <h2 className="heading-section mb-10">Technical skills</h2>
@@ -385,13 +423,14 @@ const TechnicalSkills: React.FC = () => (
           </div>
         </div>
       </div>
+    <CertificationsMarquee />
     </div>
   </section>
 );
 
 const Language: React.FC = () => (
   <section className="language-section">
-    <h2 className="heading-section">Language</h2>
+    <h2 className="heading-section">Languages</h2>
     <div className="language-list">
       <p className="language-item">
         <span className="language-label">Ukrainian:</span> Native
@@ -402,13 +441,9 @@ const Language: React.FC = () => (
         <p className="language-item">
         <span className="language-label">Swedish:</span> Beginner
       </p>
-      <p className="language-item">
-        <span className="language-label">French:</span> Bonjour 🥐
-      </p>
     </div>
   </section>
 );
-
 // --- MAIN APP COMPONENT ---
 
 const App: React.FC = () => {
@@ -420,6 +455,13 @@ const App: React.FC = () => {
             <Hero />
             <Experience />
             <Education />
+            <div className="mt-48 overflow-hidden">
+              <img 
+                src={secondImage}
+                alt="cool snoopy" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
 
           <div className="column-right">
