@@ -129,7 +129,7 @@ const experienceData: TimelineItemProps[] = [
     year: 'september 2025 - present',
     title: 'AI Engineer & Data Analyst at EPAM',
     subtitle: 'Developing a large-scale Financial AI Assistant using enterprise orchestration frameworks (Semantic Kernel, Pydantic AI) integrated with 50+ MCP tools and skills.',
-    description: 'Designed and built a custom Python parallelized evaluation framework providing 14 distinct LLM and rule-based metrics/KPIs. Conducted multi-dimensional performance analysis to eliminate bottlenecks and optimize system reliability. Provided action items for improving the system based on evaluation diagnostics.',
+    description: 'Designed and built a <strong>custom Python parallelized evaluation framework</strong> providing <strong>14 distinct LLM and rule-based metrics</strong>/KPIs. Conducted <strong>multi-dimensional performance analysis</strong> to eliminate bottlenecks and optimize system reliability. <strong>Provided action items </strong>for improving the system based on evaluation diagnostics.',
   },
   {
     year: 'february 2025 - september 2025',
@@ -223,7 +223,7 @@ const TimelineItem: React.FC<TimelineItemProps & { color: 'red' | 'white' | 'blu
         <p className="timeline-title">{title}</p>
       )}
       <p dangerouslySetInnerHTML={{ __html: subtitle }} />
-      {description && <p className="text-description">{description}</p>}
+      {description && <p className="text-description" dangerouslySetInnerHTML={{ __html: description }} />}
     </div>
   </div>
 );
