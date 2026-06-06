@@ -1,8 +1,12 @@
 import React from 'react';
 import './index.css';
-import profilePhoto from './assets/profile-cat.jpg';
-import secondImage from './assets/snoopy-rock.png';
+import profilePhoto from './assets/vampire.jpg';
+import profileCat from './assets/profile-cat.jpg';
+import secondImage from './assets/vampire2.jpg';
+import snoopyRock from './assets/snoopy-rock.png';
 import Marquee from "react-fast-marquee";
+import { ThemeToggle } from './ThemeToggle';
+import { useTheme } from './ThemeContext';
 
 // --- TYPE DEFINITIONS ---
 
@@ -208,7 +212,7 @@ const TimelineItem: React.FC<TimelineItemProps & { color: 'red' | 'white' | 'blu
       <div className={`timeline-line timeline-line--${color}`}></div>
     </div>
     <div className="timeline-content">
-      <p className={`timeline-year timeline-marker--${color}`}>{year}</p>
+      <p className="timeline-year">{year}</p>
       {/* <p className="timeline-title">{title}</p> */}
       {url ? (
         <a
@@ -337,44 +341,49 @@ const Projects: React.FC = () => (
   </section>
 );
 
-const Profile: React.FC = () => (
-  <div className="profile-container">
-    <div className="profile-background"></div>
+const Profile: React.FC = () => {
+  const { theme } = useTheme();
+  const currentProfilePhoto = theme === 'dark' ? profilePhoto : profileCat;
+  
+  return (
+    <div className="profile-container">
+      <div className="profile-background"></div>
 
-    <SvgSparkle className="absolute top-12 left-8 z-30 w-14 h-14 text-[#FFD700] opacity-60" />
-    <SvgSparkle className="absolute top-1/3 right-4 z-30 w-10 h-10 text-white opacity-40" />
+      <SvgSparkle className="absolute top-12 left-8 z-30 w-14 h-14 text-[#FFD700] opacity-60" />
+      <SvgSparkle className="absolute top-1/3 right-4 z-30 w-10 h-10 text-white opacity-40" />
 
-    <div className="profile-image-wrapper">
-      <div className="profile-accent-rectangle"></div>
-      <img
-        src={profilePhoto}
-        alt="cat screaming meow"
-        className="profile-image"
-      />
-      <p className="art-by text-right">art credits: congming33</p>
-    </div>
+      <div className="profile-image-wrapper">
+        <div className="profile-accent-rectangle"></div>
+        <img
+          src={currentProfilePhoto}
+          alt="cat screaming meow"
+          className="profile-image"
+        />
+        <p className="art-by text-right">art credits: congming33</p>
+      </div>
 
-    <div className="badge-info badge-info--gold profile-badge-name">
-      Iryna Boiko
-    </div>
-    <div className="badge-info badge-info--gold profile-badge-nationality">
-      Ukrainian
-    </div>
+      <div className="badge-info badge-info--gold profile-badge-name">
+        Iryna Boiko
+      </div>
+      <div className="badge-info badge-info--gold profile-badge-nationality">
+        Ukrainian
+      </div>
 
-    <div className="contact-card">
-      <h3 className="contact-heading">Contact</h3>
-      <div className="contact-list">
-        {contactData.map((item) => (
-          <div key={item.text} className="contact-item">
-            {item.icon}
-            <span className="font-medium">{item.text}</span>
-            <span className="ml-2 text-[#E94E1B]">★</span>
-          </div>
-        ))}
+      <div className="contact-card">
+        <h3 className="contact-heading">Contact</h3>
+        <div className="contact-list">
+          {contactData.map((item) => (
+            <div key={item.text} className="contact-item">
+              {item.icon}
+              <span className="font-medium">{item.text}</span>
+              <span className="ml-2 text-[#E94E1B]">★</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const TechnicalSkills: React.FC = () => (
   <section className="skills-section">
@@ -447,22 +456,27 @@ const Language: React.FC = () => (
 // --- MAIN APP COMPONENT ---
 
 const App: React.FC = () => {
+  const { theme } = useTheme();
+  const currentSecondImage = theme === 'dark' ? secondImage : snoopyRock;
+  
   return (
-    <div className="page-container">
-      <div className="content-wrapper">
-        <div className="two-column-layout">
-          <div className="column-left">
-            <Hero />
-            <Experience />
-            <Education />
-            <div className="mt-48 overflow-hidden">
-              <img 
-                src={secondImage}
-                alt="cool snoopy" 
-                className="w-full h-auto object-cover"
-              />
+    <>
+      <ThemeToggle />
+      <div className="page-container">
+        <div className="content-wrapper">
+          <div className="two-column-layout">
+            <div className="column-left">
+              <Hero />
+              <Experience />
+              <Education />
+              <div className="mt-48 overflow-hidden">
+                <img 
+                  src={currentSecondImage}
+                  alt="cool snoopy" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
-          </div>
 
           <div className="column-right">
             <Profile />
@@ -473,6 +487,7 @@ const App: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

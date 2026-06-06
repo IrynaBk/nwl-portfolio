@@ -2,18 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Color Variables */
-:root {
-  --color-cream: #FFE8B3;
+/* Color Variables - Dark Theme */
+[data-theme="dark"] {
+  --color-cream: #010101;
+  --color-dark-purple: #8b8174;
+  --color-orange: #301415;
+  --color-red: #2c0c16;
+  --color-gold: #80171c;
+  --color-gold-accent: #461818;
+  --color-dark: #c4c1b8;
+  --color-gray-dark: #071628;
+  --color-gray-medium: #4A4A4A;
+  --color-gray-light: #806b80;
+  --color-timeline-text: #854d4d;  
+  --color-timeline-marker-red: #7a2f2f;
+  --color-timeline-marker-red-rgba: rgba(122, 47, 47, 0.8);
+  --color-timeline-marker-white: #ffffff;
+  --color-timeline-marker-blue: rgb(129, 77, 77);
+  --color-timeline-marker-purple: rgb(179, 159, 137);
+}
+
+/* Color Variables - Light Theme (Placeholders) */
+[data-theme="light"] {
+   --color-cream: #FFE8B3;
   --color-dark-purple: #2B1B42;
   --color-orange: #E94E1B;
   --color-red: #E64A19;
-  --color-gold: #FFD700;
+  --color-gold: #1f4e99;
   --color-gold-accent: #ffbd44;
   --color-dark: #1A1A1A;
   --color-gray-dark: #2B2B2B;
   --color-gray-medium: #4A4A4A;
   --color-gray-light: #6B7280;
+  --color-timeline-text: #141414;  
+  --color-timeline-marker-red: #30595f;
+  --color-timeline-marker-red-rgba: rgba(48, 89, 95, 0.8);
+  --color-timeline-marker-white: #000000;
+  --color-timeline-marker-blue: rgb(226, 202, 17);
+  --color-timeline-marker-purple: rgb(90, 19, 103);
+}
+
+
+
+/* Default to dark theme */
+:root {
+  color-scheme: dark;
 }
 
 /* Base Styles */
@@ -39,7 +72,8 @@ body {
 }
 
 .text-body {
-  @apply text-base text-gray-800;
+  @apply text-base;
+  color: var(--color-dark-purple);
 }
 
 .text-small {
@@ -115,19 +149,19 @@ body {
 }
 
 .timeline-marker--red {
-  @apply text-red-600;
+  color: var(--color-timeline-marker-red);
 }
 
 .timeline-marker--white {
-  @apply text-white;
+  color: var(--color-timeline-marker-white);
 }
 
 .timeline-marker--blue {
-  color: rgb(52, 111, 117);
+  color: var(--color-timeline-marker-blue);
 }
 
 .timeline-marker--purple {
-  color: rgb(43, 27, 66);
+  color: var(--color-timeline-marker-purple);
 }
 
 .timeline-marker--creamy {
@@ -146,19 +180,19 @@ body {
 
 /* ADDED THESE NEW CLASSES */
 .timeline-line--red {
-  @apply border-red-600;
+  border-color: var(--color-timeline-marker-red);
 }
 
 .timeline-line--white {
-  @apply border-white;
+  border-color: var(--color-timeline-marker-white);
 }
 
 .timeline-line--blue {
-  border-color: rgb(52, 111, 117); /* Matches the --blue marker color */
+  border-color: var(--color-timeline-marker-blue);
 }
 
 .timeline-line--purple {
-  border-color: rgb(43, 27, 66); /* Matches the --purple marker color */
+  border-color: var(--color-timeline-marker-purple);
 }
 
 .timeline-content {
@@ -167,6 +201,7 @@ body {
 
 .timeline-year {
   @apply font-semibold;
+  color: var(--color-timeline-text);
 }
 
 .timeline-title {
@@ -210,7 +245,7 @@ body {
 
 .tag--outline:hover {
   @apply bg-white;
-  color: #3D5A3B;
+  color: #531818;
 }
 
 .badge-info {
@@ -296,7 +331,8 @@ body {
 /* Contact Card */
 .contact-card {
   @apply relative z-20 mx-auto w-10/12 rounded-xl p-6 text-white shadow-2xl sm:w-8/12 md:p-8;
-  background-color: rgba(52, 111, 117, 0.90);
+  /* Use theme-scoped variable (RGBA) so transparency is controllable per theme */
+  background-color: var(--color-timeline-marker-red-rgba, rgba(94, 24, 24, 0.8));
   margin-top: -4rem;
 }
 
@@ -385,7 +421,8 @@ body {
 }
 
 .skill-text-item {
-  @apply font-medium text-gray-800;
+  @apply font-medium;
+  color: var(--color-gold);
 }
 
 .design-skills-list {
