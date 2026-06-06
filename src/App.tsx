@@ -344,6 +344,7 @@ const Projects: React.FC = () => (
 const Profile: React.FC = () => {
   const { theme } = useTheme();
   const currentProfilePhoto = theme === 'dark' ? profilePhoto : profileCat;
+  const artCredit = theme === 'dark' ? 'The Sorrows of Satan' : 'congming33';
   
   return (
     <div className="profile-container">
@@ -359,7 +360,7 @@ const Profile: React.FC = () => {
           alt="cat screaming meow"
           className="profile-image"
         />
-        <p className="art-by text-right">art credits: congming33</p>
+        <p className="art-by text-right">art credits: {artCredit}</p>
       </div>
 
       <div className="badge-info badge-info--gold profile-badge-name">
